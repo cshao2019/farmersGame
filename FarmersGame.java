@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 /**
+*This code is the Farmers Game. The object of the game is to safely transfer the cabbage, sheep,
+*wolf and human onto the other side of the bank while avoiding the wolf eating the sheep and the 
+*sheep eating the cabbage. Only the human can operate the boat and can only carry one character at a time. 
 *@author Christine Shao
-*To get all three things to the other side. Rules are that if you leave 
-*
 */
 public class FarmersGame
 
@@ -13,7 +14,14 @@ public class FarmersGame
 	public static boolean sheep;
 	public static boolean wolf;
 	public static boolean human;
-
+	
+	
+	/**
+	*This is the main method that he java interprets
+	*@param args Call other methods
+	*This method also displays to the user if they lost or won based on the return value of 
+	*a method (gameEnds())
+	*/
 	
 	public static void main(String[] args)
 	{
@@ -24,20 +32,18 @@ public class FarmersGame
 			var();
 			displaysGameStatus();
 		
-		if(gameEnds() == 1)
-			System.out.println("You lose. Wolf ate the sheep");
-		if(gameEnds() == 2)
-			System.out.println("You lose. Sheep ate the cabbage");
-		if(gameEnds() == 3)
-			System.out.println("You Win!");
+			if(gameEnds() == 1)
+				System.out.println("You lose. Wolf ate the sheep");
+			if(gameEnds() == 2)
+				System.out.println("You lose. Sheep ate the cabbage");
+			if(gameEnds() == 3)
+				System.out.println("You Win!");
 		}
 
 	
 	}
 	/**
-	*
-	*
-	*
+	*This method welcomes the user/player and states how to play and rules
 	*/
 	
 	public static void welcome()
@@ -51,9 +57,7 @@ public class FarmersGame
 	}
 	
 	/**
-	*
-	*
-	*
+	*This method updates the result onto the display
 	*/
 	public static void displaysGameStatus()
 	{
@@ -88,6 +92,13 @@ public class FarmersGame
 				
 	}
 	
+	
+	/**
+	*This method uses the user's input and determines to switch the boolean of the variables 
+	*or not in order for the character move to the other side.  
+	*It also notifies the user if they put in an invalid character (ie. the human needs to 
+	*be on the same side)
+	*/
 	public static void var()
 	{
 		Scanner kb = new Scanner(System.in); // initializing scanner 
@@ -112,7 +123,7 @@ public class FarmersGame
 		else if(user_Choice.equals("W") && wolf == human )
 		{
 			wolf = !wolf;
-			human = !human;
+			human = !human; //always change human bc human needs to be on same side (crossing river with that character)
 
 		}
 		else
@@ -125,7 +136,6 @@ public class FarmersGame
 	/**
 	*This method compares the variables each time to determine if the game continues or not
 	*@return true Stop the game. Or false Continue the game
-	*
 	*/
 	public static int gameEnds()
 		{
